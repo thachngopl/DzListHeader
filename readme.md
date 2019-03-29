@@ -4,6 +4,10 @@
 
 ![Delphi Supported Versions](https://img.shields.io/badge/Delphi%20Supported%20Versions-XE2..10.3%20Rio-blue.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-Win32%20and%20Win64-red.svg)
+![Auto Install](https://img.shields.io/badge/-Auto%20Install%20App-orange.svg)
+
+![Example Image](images/print.png)
+![Example CustomDlg](images/custom_dlg.png)
 
 - [What's New](#whats-new)
 - [Component Description](#component-description)
@@ -19,6 +23,10 @@
 - [Events](#events)
 
 ## What's New
+
+- 02/11/2019
+
+   - Include auto install app
 
 - 02/08/2019
 
@@ -42,6 +50,12 @@ In addition, the DzListHeader displays a scroll bar when the columns oversizes t
 
 ## Installing
 
+### Auto install
+
+Close Delphi IDE and run **CompInstall.exe** app to auto install component into Delphi.
+
+### Manual install
+
 1. Open **DzListHeader** package in Delphi.
 2. Ensure **Win32** Platform and **Release** config are selected.
 3. Then **Build** and **Install**.
@@ -63,9 +77,6 @@ Then write OnDrawItem of DzListHeader (not OnDrawItem of ListBox - leave this un
 
 Please see Example folder to know the basic functions.
 
-![Example Image](images/print.png)
-![Example CustomDlg](images/custom_dlg.png)
-
 ## OnDrawItem usage
 
 You should write OnDrawItem of DzListHeader (not ListBox), following this idea:
@@ -86,7 +97,7 @@ Simply like that!
 
 ## Working with Tabbed Text
 
-This components offers a second option of usage, so you don't need to use objects, and you don't need to write code to draw items.
+This component offers a second option of usage, so you don't need to use objects, and you don't need to write code to draw items.
 In this option, you should add items with text cells separated by Tab character.
 
 Let's assume you have following table:
@@ -125,7 +136,7 @@ In Customize Dialog you can reorder columns, show/hide columns and set the defau
 
 `AllowResize: Boolean` = Enable/Disable columns moving (if false, Column.Sizeable doesn't matters)
 
-`AutoDrawTabbedText: Boolean` = When using AutoDrawTabbedText, you don't need to use objects or OnDrawItem. You may add itens to the ListBox with Tab dellimited to split columns. In this case, you don't need to code to draw items. There is two methos available to use with tabbed text: AddItem (add item array, so the component automatically convert in tabbed text); GetArrayText (returns an array of requested index).
+`AutoDrawTabbedText: Boolean` = When using AutoDrawTabbedText, you don't need to use objects or OnDrawItem. You may add items to the ListBox with Tab delimiter to split columns. In this case, you don't need to code to draw items. There is two methods available to use with tabbed text: AddItem (add item array, so the component automatically convert in tabbed text); GetArrayText (returns an array of requested index).
 *You can still leave this property disabled and work with tabbed text, writing event OnDrawItem and using GetArrayText to read text of columns separated.*
 
 `ColorNormalCol: TColor` = Column background color
@@ -138,7 +149,7 @@ In Customize Dialog you can reorder columns, show/hide columns and set the defau
 
 `ColorLineSel: TColor` = Line background color when line is selected
 
-`ColorShape: TColor` = Color of dash that's indicate moving or resising orientation
+`ColorShape: TColor` = Color of dash that's indicate moving or resizing orientation
 
 `Columns: TDzListHeaderColumns` = Columns Collection
 
@@ -175,7 +186,7 @@ In Customize Dialog you can reorder columns, show/hide columns and set the defau
 `MinWidth: Integer` = Column MinWidth when resizing
 
 `Name: String` = Column Name to find the column (ColByName function) and for Save/Load customization (SaveCustom/LoadCustom functions).
-*The customization requires column name because you may change your project, and in this case the columns will be keeped in correct order based on columns names.*
+*The customization requires column name because you may change your project, and in this case the columns will be kept in correct order based on columns names.*
 
 `Sizeable: Boolean` = Allow column resize
 
@@ -252,7 +263,7 @@ Occurs when left-clicked on a column.
 ```delphi
 procedure OnColumnDraw(Sender: TObject; Col: TDzListHeaderCol; Canvas: TCanvas; Rect: TRect; Hover: Boolean);
 ```
-If you set this event, you can catch the time of column title draw, allowing you to change de canvas or adding some to current painted column.
+If you set this event, you can catch the time of column title draw, allowing you to change the canvas or adding some to current painted column.
 When the event fires, the column is already painted, but not painted into screen, because a internal bitmap is used. So this event allow you to change this bitmap canvas. When the event terminates, the bitmap is painted into screen.
 Hover parameter indicates mouse is over the column at this moment.
 
@@ -264,7 +275,7 @@ Occurs when right-clicked on a column.
 ```delphi
 procedure OnColumnResize(Sender: TObject; Col: TDzListHeaderCol);
 ```
-Occurs after a column was resised.
+Occurs after a column was resized.
 
 ```delphi
 procedure OnDrawItem(Control: TWinControl; Index: Integer; Rect: TRect; State: TOwnerDrawState);
